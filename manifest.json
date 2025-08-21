@@ -1,11 +1,14 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-tebla-plugin",
+	"name": "Tebla",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.9.10",
+	"description": "Spaced repetition in table format. Uses modern FSRS algorithm.",
+	"author": "Alexander Sorokin",
+	"authorUrl": "https://github.com/schoonc",
+	"fundingUrl": {
+		"Boosty": "https://boosty.to/schoonc",
+		"Patreon": "https://patreon.com/schoonc"
+	},
 	"isDesktopOnly": false
 }
