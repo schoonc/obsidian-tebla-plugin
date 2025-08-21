@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Spaced repetition in table format. Uses modern FSRS algorithm.",
 	"main": "main.js",
+	"type": "module",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
