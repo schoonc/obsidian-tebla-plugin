@@ -1,25 +1,26 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "module": "ESNext",
-    "target": "ES6",
-    "allowJs": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "isolatedModules": true,
-    "strictNullChecks": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "target": "es2023",
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "DOM",
-      "ES5",
-      "ES6",
-      "ES7"
-    ]
+
+    "downlevelIteration": true,
+    "importHelpers": true,
+
+    /* https://vite.dev/guide/features.html#isolatedmodules */
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    "strict": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
   "include": [
-    "**/*.ts"
+    "npmScripts/**/*.ts",
+    "shims/**/*.d.ts",
+    "src/**/*.ts",
+    "vite.config.ts"
   ]
 }

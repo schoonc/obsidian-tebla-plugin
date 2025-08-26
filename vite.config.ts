@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import {resolve} from "path";
 import vue from '@vitejs/plugin-vue'
 import stringHash from 'string-hash'
@@ -25,6 +26,12 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  test: {
+    alias: {
+      obsidian: resolve(__dirname, './tests/mocks/obsidian.ts')
+    },
+    environment: 'jsdom'
+  },
 	css: {
       modules: {
         generateScopedName: (name, filename, css) => {
@@ -41,7 +48,7 @@ export default defineConfig({
   build: {
 		watch: buildWatch,
 	  lib: {
-		  entry: resolve(__dirname, './main.ts'),
+		  entry: resolve(__dirname, './src/main.ts'),
       formats: ['cjs'], /* obsidian requires the plugin to be in cjs format. */
     },
 	  rollupOptions: {

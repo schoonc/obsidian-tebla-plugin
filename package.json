@@ -6,6 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "docker compose up",
+		"test": "docker compose run app vitest",
 		"buildApp": "docker compose run app sh -c \"tsc -noEmit -skipLibCheck && NODE_ENV=production vite build\"",
 		"down": "docker compose down",
 		"buildImage": "docker compose build",
@@ -29,12 +30,23 @@
 		"@types/node": "20.19.11",
 		"@types/string-hash": "1.1.3",
 		"@vitejs/plugin-vue": "5.2.4",
+		"jsdom": "26.1.0",
 		"obsidian": "latest",
+		"sass-embedded": "1.90.0",
 		"string-hash": "1.1.3",
 		"tslib": "2.8.1",
-		"tsx": "4.20.4",
+		"tsx": "4.20.5",
 		"typescript": "5.9.2",
 		"vite": "6.3.5",
+		"vitest": "3.2.4",
 		"yaml": "2.8.1"
+	},
+	"dependencies": {
+		"auto-bind": "5.0.1",
+		"eventemitter3": "5.0.1",
+		"monkey-around": "3.0.0",
+		"ts-fsrs": "5.2.2",
+		"uuid": "11.1.0",
+		"zod": "4.1.1"
 	}
 }
