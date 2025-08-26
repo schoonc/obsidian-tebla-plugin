@@ -16,7 +16,7 @@ export const getDockerCompose = () => {
                 },
                 // On the first container startup, /opt/nodeApp/node_modules exists and will be moved to /opt/nodeApp/app
                 // During subsequent startups - it will not be moved.
-                command: 'sh -c "[ -d /opt/nodeApp/node_modules ] && rm -rf /opt/nodeApp/app/node_modules && mv /opt/nodeApp/node_modules /opt/nodeApp/app; node esbuild.config.mjs"'
+                command: 'sh -c "[ -d /opt/nodeApp/node_modules ] && rm -rf /opt/nodeApp/app/node_modules && mv /opt/nodeApp/node_modules /opt/nodeApp/app; NODE_ENV=development vite build --watch --minify=false"'
             },
         },
     }
