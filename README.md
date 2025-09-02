@@ -1,5 +1,5 @@
 # What is this?
-Obsidian plugin for spaced repetition.
+Obsidian plugin for spaced repetition. Uses modern FSRS algorithm.
 
 # Why is it named this way?
 `Table` with the vowel order as in `learn`.
