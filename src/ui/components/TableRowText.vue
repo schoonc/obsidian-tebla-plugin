@@ -73,7 +73,7 @@ const onEditorEscape = () => {
 .masked {
     filter: blur(0.5em);
     position: relative;
-    :after {
+    &:after {
         content: '';
         cursor: pointer;
         position: absolute;
