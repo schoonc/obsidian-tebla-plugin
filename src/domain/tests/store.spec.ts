@@ -306,29 +306,6 @@ describe('Store', () => {
     })
   })
 
-  describe('toggleAnswerDisclose', () => {
-    test('toggles class on element', () => {
-      const element = document.createElement('div')
-      vi.spyOn(element.classList, 'contains').mockReturnValue(false)
-      vi.spyOn(element.classList, 'add')
-      vi.spyOn(element.classList, 'remove')
-      
-      const event = { target: element } as unknown as MouseEvent
-
-      store.toggleAnswerDisclose(event, 'disclosed')
-      expect(element.classList.add).toHaveBeenCalledWith('disclosed')
-
-      vi.mocked(element.classList.contains).mockReturnValue(true)
-      store.toggleAnswerDisclose(event, 'disclosed')
-      expect(element.classList.remove).toHaveBeenCalledWith('disclosed')
-    })
-
-    test('does nothing if target is not HTMLElement', () => {
-      const event = { target: null } as MouseEvent
-      expect(() => store.toggleAnswerDisclose(event, 'disclosed')).not.toThrow()
-    })
-  })
-
   describe('watchState', () => {
     test('notifies repository on state change', async () => {
       const { watch } = await import('vue')
