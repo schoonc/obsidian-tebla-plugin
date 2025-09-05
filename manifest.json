@@ -2,7 +2,7 @@
 	"id": "obsidian-tebla-plugin",
 	"name": "Tebla",
 	"version": "1.0.0",
-	"minAppVersion": "1.9.10",
+	"minAppVersion": "1.9.12",
 	"description": "Spaced repetition in table format. Uses modern FSRS algorithm.",
 	"author": "Alexander Sorokin",
 	"authorUrl": "https://github.com/schoonc",

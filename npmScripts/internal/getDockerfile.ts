@@ -2,7 +2,7 @@ import { getManifest } from "./getManifest"
 
 /* To get the Node.js version that Obsidian is running on, you can execute process.versions.node in the inspector. */
 const OBSIDIAN_VERSION_TO_NODE_VERSION: Record<string,string> = {
-    '1.9.10': '20.18.2',
+    '1.9.12': '20.18.2',
 }
 
 export const getDockerfile = (minAppVersion?: string) => {
