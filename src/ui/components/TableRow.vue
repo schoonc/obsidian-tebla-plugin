@@ -10,7 +10,7 @@
         <td dir="auto" :class="dueTdClass">{{ item.card.due.toLocaleString() }}</td>
         <td :class="$style['actions-td']">
             <div :class="$style['buttons']">
-                <OButton @click="store.deleteItem(item.itemId)" icon="trash" tooltip="Delete" />
+                <OClickableIcon @click="store.deleteItem(item.itemId)" icon="trash" title="Delete" />
             </div>
         </td>
     </tr>
@@ -19,6 +19,7 @@
 <script lang="ts" setup>
 import { computed, inject, useCssModule } from 'vue';
 import { Store } from '../../domain/store';
+import OClickableIcon from '../uiKit/OClickableIcon.vue';
 import OButton from '../uiKit/OButton.vue';
 import TableRowText from './TableRowText.vue';
 const store = inject<Store>('store')!
