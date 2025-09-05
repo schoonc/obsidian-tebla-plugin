@@ -11,14 +11,14 @@
 			</div>
 		 </div>
 		<div class="el-table" dir="auto" style="overflow-x: auto;">
-			<table :class="$style['table']" @click="store.toggleAnswerDisclose($event, $style['answer-td--disclosed'])">
+			<table :class="$style['table']">
 				<thead>
 					<tr>
-						<th dir="auto" style="width: 50%">Question</th>
-						<th dir="auto" style="width: 50%">Answer</th>
-						<th dir="auto" :class="$style['shrink-th']">Grade</th>
-						<th dir="auto" :class="$style['due']" @click="store.sort()" ref="due">Due date</th>
-						<th dir="auto" :class="$style['shrink-th']"></th>
+						<th dir="auto">Question</th>
+						<th dir="auto">Answer</th>
+						<th dir="auto">Grade</th>
+						<th dir="auto" @click="store.sort()" ref="due">Due date</th>
+						<th dir="auto"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -50,35 +50,9 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" module>
-.buttons {
-	display: flex;
-	gap: var(--size-4-2);
-}
 .table {
 	width: 100%;
 	margin: 0 !important;
-}
-.shrink-th {
-	width: 0;
-}
-.answer-td {
-	filter: blur(0.5rem);
-
-	&--disclosed {
-		filter: none;
-	}
-}
-.due {
-	width: 0;
-	white-space: nowrap !important;
-	text-decoration: underline !important;
-}
-.overdue {
-	font-weight: bold;
-	color: var(--text-accent) !important;
-}
-.next {
-	color: var(--text-accent) !important;
 }
 .bases-header {
 	border-bottom: none;

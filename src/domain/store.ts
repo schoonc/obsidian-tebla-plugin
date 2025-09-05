@@ -125,13 +125,4 @@ export class Store extends EventEmitter<StoreEvents> {
 		const recordLogItem = recordLog[grade]
 		item.card = recordLogItem.card
 	}
-	toggleAnswerDisclose (e: MouseEvent, disclosedClass: string) {
-		if (e.target && e.target instanceof HTMLElement) {
-			if (e.target.classList.contains(disclosedClass)) {
-				e.target.classList.remove(disclosedClass)
-			} else {
-				e.target.classList.add(disclosedClass)
-			}
-		}
-	}
 }

@@ -1,14 +1,14 @@
 <template>
     <tr>
-        <TableRowText :item="item" field="question"/>
-        <TableRowText :item="item" field="answer" maskable/>
-        <td dir="auto">
+        <TableRowText :class="$style['question-td']" :item="item" field="question"/>
+        <TableRowText :class="$style['answer-td']" :item="item" field="answer" maskable/>
+        <td dir="auto" :class="$style['grade-td']">
             <div :class="$style['buttons']">
                 <OButton v-for="grade of [3,1]" :key="grade" @click="store.gradeItem(item.itemId, grade)" :buttonText="store.gradeNumToGradeText[grade]"/>
             </div>
         </td>
         <td dir="auto" :class="dueTdClass">{{ item.card.due.toLocaleString() }}</td>
-        <td>
+        <td :class="$style['actions-td']">
             <div :class="$style['buttons']">
                 <OButton @click="store.deleteItem(item.itemId)" icon="trash" tooltip="Delete" />
             </div>
@@ -17,10 +17,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, inject, ref, useCssModule } from 'vue';
+import { computed, inject, useCssModule } from 'vue';
 import { Store } from '../../domain/store';
-import TableRowText from './TableRowText.vue';
 import OButton from '../uiKit/OButton.vue';
+import TableRowText from './TableRowText.vue';
 const store = inject<Store>('store')!
 const props = defineProps({
     item: {
@@ -34,40 +34,49 @@ const dueTdClass = computed(() => {
     const curDateTime = store.curDate.getTime()
     const hour = 60 * 60 * 1000
     return {
-        [$style['due']]: true, 
-        [$style['overdue']]: dueTime <= curDateTime, 
-        [$style['next']]: dueTime <= curDateTime + hour}
+        [$style['due-date-td']]: true, 
+        [$style['due-date-td--overdue']]: dueTime <= curDateTime, 
+        [$style['due-date-td--next']]: dueTime <= curDateTime + hour}
 })
 </script>
 
 <style lang="scss" module>
-.buttons {
-	display: flex;
-	gap: var(--size-4-2);
-    justify-content: center;
+$maxHeight: 100px;
+.question-td {
+    max-width: 0 !important;
+    max-height: $maxHeight;
 }
-.table {
-	width: 100%;
-}
-.shrink-th {
-	width: 0;
-}
-.answer-td {
-	filter: blur(0.5rem);
 
-	&--disclosed {
-		filter: none;
-	}
+.answer-td {
+    max-width: 0 !important;
+    max-height: $maxHeight;
 }
-.due {
-	white-space: nowrap !important;
-    vertical-align: middle !important;
+
+.grade-td {
+    width: 0;
+    max-height: $maxHeight;
 }
-.overdue {
+
+.due-date-td {
+    width: 0;
+    white-space: nowrap !important;
+    max-height: $maxHeight;
+}
+.due-date-td--overdue {
 	font-weight: bold;
 	color: var(--text-accent) !important;
 }
-.next {
+.due-date-td--next {
 	color: var(--text-accent) !important;
+}
+
+.actions-td {
+    width: 0;
+    max-height: $maxHeight;
+}
+
+.buttons {
+	display: flex;
+	gap: var(--size-4-2);
 }
 </style>
