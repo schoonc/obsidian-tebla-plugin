@@ -1,10 +1,8 @@
 <template>
     <td dir="auto" :class="tdClass" @click="onTdClick">
         <div :class="$style['td-height-helper']">
-            <div :class="$style['td-cursor-helper']">
-                <MarkdownEditor v-if="mode === 'editor'" v-model="item[field]" :obsidianApp="obsidianApp" @blur="onEditorBlur" @escape="onEditorEscape" ref="editor"/>
-                <MarkdownPreview v-else v-model="item[field]"/>
-            </div>
+            <MarkdownEditor v-if="mode === 'editor'" v-model="item[field]" :obsidianApp="obsidianApp" @blur="onEditorBlur" @escape="onEditorEscape" ref="editor"/>
+            <MarkdownPreview v-else v-model="item[field]"/>
         </div>
     </td>
 </template>
@@ -74,13 +72,16 @@ const onEditorEscape = () => {
 }
 .masked {
     filter: blur(0.5em);
-    .td-cursor-helper {
+    position: relative;
+    :after {
+        content: '';
         cursor: pointer;
-    }
-}
-.regular {
-    .td-cursor-helper {
-        cursor: text;
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
     }
 }
 </style>
