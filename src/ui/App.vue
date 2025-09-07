@@ -53,6 +53,7 @@ watchEffect(() => {
 .table {
 	width: 100%;
 	margin: 0 !important;
+	--table-column-min-width: 0;
 }
 .bases-header {
 	border-bottom: none;
