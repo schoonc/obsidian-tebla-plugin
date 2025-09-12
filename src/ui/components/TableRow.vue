@@ -9,7 +9,7 @@
         </td>
         <td dir="auto" :class="$style['due-td']">
             <div title="Review date" :class="dueClass">{{ item.card.due.toLocaleString() }}</div>
-            <div title="Last review date" :class="$style['last-review']">{{ item.card.last_review.toLocaleString() }}</div>
+            <div v-if="item.card.last_review" title="Last review date" :class="$style['last-review']">{{ item.card.last_review.toLocaleString() }}</div>
         </td>
         <td dir="auto" :class="$style['stability-td']">{{ item.card.stability }}</td>
         <td dir="auto" :class="$style['difficulty-td']">{{ item.card.difficulty }}</td>
