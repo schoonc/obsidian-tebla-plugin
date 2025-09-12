@@ -67,7 +67,7 @@ const onEditorEscape = () => {
 
 <style lang="scss" module>
 .td-height-helper {
-    max-height: 100px;
+    max-height: 300px;
     overflow: auto;
 }
 .masked {

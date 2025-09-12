@@ -42,26 +42,21 @@ const dueTdClass = computed(() => {
 </script>
 
 <style lang="scss" module>
-$maxHeight: 300px;
 .question-td {
     max-width: 0 !important;
-    max-height: $maxHeight;
 }
 
 .answer-td {
     max-width: 0 !important;
-    max-height: $maxHeight;
 }
 
 .grade-td {
     width: 0;
-    max-height: $maxHeight;
 }
 
 .due-date-td {
     width: 0;
     white-space: nowrap !important;
-    max-height: $maxHeight;
 }
 .due-date-td--overdue {
 	font-weight: bold;
@@ -73,7 +68,6 @@ $maxHeight: 300px;
 
 .actions-td {
     width: 0;
-    max-height: $maxHeight;
 }
 
 .buttons {
