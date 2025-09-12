@@ -10,11 +10,11 @@ const props = defineProps<{
 	modelValue: string,
 	obsidianApp: ObsidianApp,
 }>()
-const emit = defineEmits([
-	'update:modelValue',
-	'blur',
-	'escape'
-])
+const emit = defineEmits<{
+	'update:modelValue': [value: string],
+	'blur': [],
+	'escape': [],
+}>()
 watch(() => {
 	return props.modelValue
 }, (value) => {

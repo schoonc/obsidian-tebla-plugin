@@ -22,7 +22,9 @@ const props = withDefaults(defineProps<{
     placeholder: () => ''
   }
 )
-const emit = defineEmits(['update:model-value'])
+const emit = defineEmits<{
+  'update:modelValue': [value: string]
+}>()
 
 
 const root = ref()
@@ -58,7 +60,7 @@ onMounted(() => {
   updatePlaceholder()
   updateValue()
   oc.onChange((value) => {
-    emit('update:model-value', value)
+    emit('update:modelValue', value)
   })
 })
 // onUpdated(updateAttrs)
