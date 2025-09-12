@@ -6,24 +6,12 @@
 import { ButtonComponent } from 'obsidian'
 import { onMounted, ref, watch } from 'vue'
 
-const props = defineProps({
-  buttonText: {
-    required: false,
-    type: String,
-  },
-  cta: {
-    required: false,
-    type: Boolean,
-  },
-  icon: {
-    required: false,
-    type: String,
-  },
-  tooltip: {
-    required: false,
-    type: String,
-  }
-})
+const props = defineProps<{
+  buttonText?: string,
+  cta?: boolean,
+  icon?: string,
+  tooltip?: string
+}>()
 
 const root = ref()
 let oc: ButtonComponent | null = null

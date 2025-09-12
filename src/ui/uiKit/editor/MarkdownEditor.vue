@@ -5,7 +5,11 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { createEmbeddableMarkdownEditor, EmbeddableMarkdownEditor } from './markdownEditor';
-const props = defineProps(['modelValue', 'obsidianApp'])
+import { type App as ObsidianApp} from 'obsidian'
+const props = defineProps<{
+	modelValue: string,
+	obsidianApp: ObsidianApp,
+}>()
 const emit = defineEmits([
 	'update:modelValue',
 	'blur',

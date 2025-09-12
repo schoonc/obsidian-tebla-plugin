@@ -12,12 +12,9 @@
 <script lang="ts" setup>
 import { Component, MarkdownRenderer, type App as ObsidianApp } from 'obsidian';
 import { inject, onBeforeUnmount, shallowRef, watchEffect } from 'vue';
-const props = defineProps({
-    modelValue: {
-        type: String,
-        required: true,
-    }
-})
+const props = defineProps<{
+    modelValue: string
+}>()
 
 const obsidianApp = inject<ObsidianApp>('obsidianApp')!
 const container = shallowRef<HTMLElement>()

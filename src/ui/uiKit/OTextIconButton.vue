@@ -8,12 +8,9 @@
 <script setup lang="ts">
 import { getIcon } from 'obsidian'
 import { onMounted, shallowRef, watch } from 'vue';
-const props = defineProps({
-  icon: {
-    type: String,
-    required: true,
-  }
-})
+const props = defineProps<{
+  icon: string,
+}>()
 const icon = shallowRef()
 
 const updateIcon = () => {

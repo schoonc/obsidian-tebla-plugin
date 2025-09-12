@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { TextAreaComponent } from 'obsidian'
-import { onMounted, onUpdated, ref, useAttrs, watch } from 'vue'
+import { TextAreaComponent } from 'obsidian';
+import { onMounted, ref, useAttrs, watch } from 'vue';
 
 defineOptions({
   inheritAttrs: false
@@ -12,32 +12,22 @@ defineOptions({
 
 const attrs = useAttrs()
 
-const props = defineProps({
-  modelValue: {
-    required: false,
-    type: String,
-    default () {
-      return ''
-    }
-  },
-  placeholder: {
-    required: false,
-    type: String,
-    default () {
-      return ''
-    }
-  },
-  rows: {
-    required: false,
-    type: [String, Number],
+const props = withDefaults(defineProps<{
+  modelValue?: string,
+  placeholder?: string,
+  rows?: string | number,
+}>(),
+  {
+    modelValue: () => '',
+    placeholder: () => ''
   }
-})
+)
 const emit = defineEmits(['update:model-value'])
 
 
 const root = ref()
 let oc: TextAreaComponent | null = null
-let prevAppliedAttrs = null
+let prevAppliedAttrs: ReturnType<typeof useAttrs> | null = null
 
 const updateAttrs = () => {
   if (!oc) {

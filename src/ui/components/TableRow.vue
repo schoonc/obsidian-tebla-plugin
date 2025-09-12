@@ -27,13 +27,11 @@ import { Store } from '../../domain/store';
 import OClickableIcon from '../uiKit/OClickableIcon.vue';
 import OButton from '../uiKit/OButton.vue';
 import TableRowText from './TableRowText.vue';
+import type { Item } from '../../domain/schemaTypes';
 const store = inject<Store>('store')!
-const props = defineProps({
-    item: {
-        type: Object,
-        required: true,
-    }
-})
+const props = defineProps<{
+    item: Item
+}>()
 const $style = useCssModule()
 const dueClass = computed(() => {
     const dueTime = props.item.card.due.getTime()

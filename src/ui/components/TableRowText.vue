@@ -12,21 +12,13 @@ import { type App as ObsidianApp } from 'obsidian';
 import { computed, inject, nextTick, ref, shallowRef, useCssModule } from 'vue';
 import MarkdownEditor from '../uiKit/editor/MarkdownEditor.vue';
 import MarkdownPreview from './MarkdownPreview.vue';
+import type { Item } from '../../domain/schemaTypes';
 
-const props = defineProps({
-    maskable: {
-        type: Boolean,
-        required: false,
-    },
-    field: {
-        type: String,
-        required: true,
-    },
-    item: {
-        type: Object,
-        required: true,
-    }
-})
+const props = defineProps<{
+    maskable?: boolean,
+    field: 'question' | 'answer',
+    item: Item,
+}>()
 
 const $style = useCssModule()
 const obsidianApp = inject<ObsidianApp>('obsidianApp')!
