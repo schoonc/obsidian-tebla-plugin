@@ -298,7 +298,7 @@ describe('Store', () => {
         }
       ]
 
-      store.sort()
+      store.sort('due')
 
       expect(store.state.items[0].itemId).toBe('id2')
       expect(store.state.items[1].itemId).toBe('id3')
