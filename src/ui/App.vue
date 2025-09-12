@@ -17,7 +17,18 @@
 						<th dir="auto">Question</th>
 						<th dir="auto">Answer</th>
 						<th dir="auto">Grade</th>
-						<th dir="auto" @click="store.sort()" ref="due">Due date</th>
+						<th dir="auto">
+							<div>Review date</div>
+							<button type="button" :class="$style['sort-link']" @click="store.sort('due')">По возрастанию</button>
+						</th>
+						<th dir="auto">
+							<div>Stability</div>
+							<button type="button" :class="$style['sort-link']" @click="store.sort('stability')">Сначала нестабильные</button>
+						</th>
+						<th dir="auto">
+							<div>Difficulty</div>
+							<button type="button" :class="$style['sort-link']" @click="store.sort('difficulty')">Сначала сложные</button>
+						</th>
 						<th dir="auto"></th>
 					</tr>
 				</thead>
@@ -33,20 +44,11 @@
 </template>
 
 <script setup lang="ts">
-import { setTooltip } from 'obsidian';
-import { inject, shallowRef, watchEffect } from 'vue';
+import { inject } from 'vue';
 import { Store } from '../domain/store';
 import TableRow from './components/TableRow.vue';
 import OTextIconButton from './uiKit/OTextIconButton.vue';
 const store = inject<Store>('store')!
-
-const due = shallowRef()
-watchEffect(() => {
-	if (due.value) {
-		setTooltip(due.value, 'Click to sort', { delay: 100})
-	}
-})
-
 </script>
 
 <style lang="scss" module>
@@ -61,5 +63,21 @@ watchEffect(() => {
 .results {
 	font-size: var(--font-ui-smaller);
 	color: var(--text-muted);
+}
+.sort-link {
+	all: unset;
+	font-weight: normal;
+	color: var(--text-muted) !important;
+	box-shadow: none !important;
+	background-color: transparent !important;
+	white-space: nowrap;
+	font-size: var(--font-smallest);
+	border-bottom: 1px dashed;
+	&:hover {
+		color: var(--text-normal) !important;
+	}
+	&:focus-visible {
+		outline: 1px solid;
+	}
 }
 </style>

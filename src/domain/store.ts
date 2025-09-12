@@ -7,6 +7,7 @@ import type { StateRepository, StoreEvents } from './interfaces';
 import type { StoreRawState } from './schemaTypes';
 
 type StoreReactiveState = Reactive<StoreRawState>
+type SortKey = 'due' | 'stability' | 'difficulty'
 
 const gradeNumToGradeText = {
     1: 'Again',
@@ -75,9 +76,17 @@ export class Store extends EventEmitter<StoreEvents> {
 		this.state = reactive(state)
 		this.unwatchState = this.watchState()
 	}
-	sort () {
+	sort (by: SortKey) {
 		this.state.items.sort((a, b) => {
-			return a.card.due.getTime() - b.card.due.getTime()
+			if (by === 'due') {
+				return a.card.due.getTime() - b.card.due.getTime()
+			} else if (by === 'difficulty') {
+				return b.card.difficulty - a.card.difficulty
+			} else if (by === 'stability') {
+				return a.card.stability - b.card.stability
+			} else {
+				throw new Error(`Programming error: an unexpected sort key "${by}"`)
+			}
 		})
 	}
 	addItem (question: string, answer: string) {

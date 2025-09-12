@@ -7,7 +7,12 @@
                 <OButton v-for="grade of [3,1]" :key="grade" @click="store.gradeItem(item.itemId, grade)" :buttonText="store.gradeNumToGradeText[grade]"/>
             </div>
         </td>
-        <td dir="auto" :class="dueTdClass">{{ item.card.due.toLocaleString() }}</td>
+        <td dir="auto" :class="$style['due-td']">
+            <div title="Review date" :class="dueClass">{{ item.card.due.toLocaleString() }}</div>
+            <div title="Last review date" :class="$style['last-review']">{{ item.card.last_review.toLocaleString() }}</div>
+        </td>
+        <td dir="auto" :class="$style['stability-td']">{{ item.card.stability }}</td>
+        <td dir="auto" :class="$style['difficulty-td']">{{ item.card.difficulty }}</td>
         <td :class="$style['actions-td']">
             <div :class="$style['buttons']">
                 <OClickableIcon @click="store.deleteItem(item.itemId)" icon="trash" title="Delete" />
@@ -30,14 +35,13 @@ const props = defineProps({
     }
 })
 const $style = useCssModule()
-const dueTdClass = computed(() => {
+const dueClass = computed(() => {
     const dueTime = props.item.card.due.getTime()
     const curDateTime = store.curDate.getTime()
     const hour = 60 * 60 * 1000
     return {
-        [$style['due-date-td']]: true, 
-        [$style['due-date-td--overdue']]: dueTime <= curDateTime, 
-        [$style['due-date-td--next']]: dueTime <= curDateTime + hour}
+        [$style['due--overdue']]: dueTime <= curDateTime, 
+        [$style['due--next']]: dueTime <= curDateTime + hour}
 })
 </script>
 
@@ -54,16 +58,29 @@ const dueTdClass = computed(() => {
     width: 0;
 }
 
-.due-date-td {
+.due-td {
     width: 0;
     white-space: nowrap !important;
 }
-.due-date-td--overdue {
+.due--overdue {
 	font-weight: bold;
 	color: var(--text-accent) !important;
 }
-.due-date-td--next {
+.due--next {
 	color: var(--text-accent) !important;
+}
+.last-review {
+    color: var(--text-faint);
+}
+
+.difficulty-td {
+    width: 0;
+    white-space: nowrap !important;
+}
+
+.stability-td {
+    width: 0;
+    white-space: nowrap !important;
 }
 
 .actions-td {
