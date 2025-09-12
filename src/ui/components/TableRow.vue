@@ -42,7 +42,7 @@ const dueTdClass = computed(() => {
 </script>
 
 <style lang="scss" module>
-$maxHeight: 100px;
+$maxHeight: 300px;
 .question-td {
     max-width: 0 !important;
     max-height: $maxHeight;
