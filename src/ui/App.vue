@@ -19,15 +19,15 @@
 						<th dir="auto">Grade</th>
 						<th dir="auto">
 							<div>Review date</div>
-							<button type="button" :class="$style['sort-link']" @click="store.sort('due')">По возрастанию</button>
+							<button type="button" :class="$style['sort-link']" @click="store.sort('due')">Ascending</button>
 						</th>
 						<th dir="auto">
 							<div>Stability</div>
-							<button type="button" :class="$style['sort-link']" @click="store.sort('stability')">Сначала нестабильные</button>
+							<button type="button" :class="$style['sort-link']" @click="store.sort('stability')">Unstable first</button>
 						</th>
 						<th dir="auto">
 							<div>Difficulty</div>
-							<button type="button" :class="$style['sort-link']" @click="store.sort('difficulty')">Сначала сложные</button>
+							<button type="button" :class="$style['sort-link']" @click="store.sort('difficulty')">Difficult first</button>
 						</th>
 						<th dir="auto"></th>
 					</tr>
